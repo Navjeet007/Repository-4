@@ -1,12 +1,117 @@
-*.class
 
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
+public class Employee {
+private String firstName;
+private String lastName;
+private double monthlySalary;
+public Employee (String Fname, String Lname, double Msalary)
+{
+	firstName=Fname;
+	lastName=Lname;
+	if (Msalary>=0.0)
+	{
+		monthlySalary=Msalary;
+	}
+	else
+	{
+		monthlySalary=0.0;
+	}
+}
+public void setfirstName (String Fname)
+{ 
+	firstName= Fname;
+}
+public String getfirstName()
+{
+	return firstName;
+}
+public void setlastName (String Lname)
+{ 
+	lastName= Lname;
+}
+public String getlastName()
+{
+	return lastName;
+}
+public double getmonthlySalary()
+{
+	return monthlySalary;
+}
+public void setmonthlySalary (double Msalary)
+{ 
+	if (Msalary>=0.0)
+	{
+		monthlySalary= Msalary;
+	}
+	else
+	{
+		monthlySalary=0.0;
+	}
+}
+}
+//Test Program
 
-# Package Files #
-*.jar
-*.war
-*.ear
+import java.util.Scanner;
+public class EmployeeTest 
+{
+	public static void main(String []args)
+	{
+			
+		Scanner in=new Scanner(System.in);
+		String FirstN=null;
+		String LastN = null;
+		double MonthlyS = 0.0;
+		double RaisedSalary=0.0;
+		Employee employee1=new Employee(FirstN,LastN,MonthlyS);
+		Employee employee2=new Employee(FirstN,LastN,MonthlyS);
+		
+		System.out.printf("Enter Employee 1 First Name:");
+		FirstN=in.nextLine();
+		employee1.setfirstName(FirstN);
+		System.out.print("Enter  Employee 1 Last Name:");
+		LastN=in.nextLine();
+		employee1.setlastName(LastN);	
+		System.out.print("Enter Employee 1 Monthly Salary:");
+		MonthlyS=in.nextDouble();
+		employee1.setmonthlySalary(MonthlyS);
+		System.out.printf("Employee 1 First Name is : %s\n",
+				employee1.getfirstName());
+		System.out.printf("Employee 1 Last Name is : %s\n",
+				employee1.getlastName());
+		System.out.printf("Employee 1 Monthly Salary is : $%.2f\n",
+				employee1.getmonthlySalary());
+				
+		
+		System.out.printf("Enter Employee 2 First Name:");
+		FirstN=in.next();
+		employee2.setfirstName(FirstN);
+		System.out.printf("Enter  Employee 2 Last Name:");
+		LastN=in.next();
+		employee2.setlastName(LastN);
+		System.out.printf("Enter Employee 2 Monthly Salary:");
+		MonthlyS=in.nextDouble();
+		employee2.setmonthlySalary(MonthlyS);
+		System.out.printf("Employee 2 First Name is : %s",
+				employee2.getfirstName());
+		System.out.printf("\nEmployee 2 Last Name is : %s",
+				employee2.getlastName());
+		System.out.printf("\nEmployee 2 Monthly salary is : $%.2f\n",
+				employee2.getmonthlySalary());
+		double SalaryM=employee1.getmonthlySalary()*12;
+		double SalaryMM=employee2.getmonthlySalary()*12;
+		
+		System.out.printf ("Yearly Salary of employee 1 is : $%.2f\n",SalaryM);
+		
+		System.out.printf ("Yearly Salary of employee 2 is : $%.2f\n",SalaryMM);
+		
+		RaisedSalary=employee1.getmonthlySalary()+employee1.getmonthlySalary()*0.10;
+		employee1.setmonthlySalary(RaisedSalary);
+		System.out.printf ("New Yearly Salary after raise for employee 1 is : $%.2f\n",employee1.getmonthlySalary()*12 );
+		employee1.getmonthlySalary();
+		
+		RaisedSalary=employee2.getmonthlySalary()+employee2.getmonthlySalary()*0.10;
+		employee2.setmonthlySalary(RaisedSalary);
+		System.out.printf ("New Yearly Salary after raise for employee 2 is : $%.2f\n", employee2.getmonthlySalary()*12);
+		employee2.getmonthlySalary();
+	}
+}
 
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
